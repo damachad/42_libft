@@ -1,0 +1,17 @@
+ft_itoa too many functions (simplify)
+
+memmove can not use VLAs
+
+test strlcpy, strlcat, striteri ?
+
+Difference between memcpy and memmove?
+
+Is calloc ok?
+
+Missing split, strmapi, strtrim
+
+strtrim	How to go through every char in "set" and compare to many char in "s1"?
+
+strmapi	Understand the subject
+
+split		How to send specific interval of chararcters in string as argument? As 		in how to copy a certain "word"?

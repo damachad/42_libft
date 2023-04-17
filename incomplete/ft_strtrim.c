@@ -1,49 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 10:07:25 by damachad          #+#    #+#             */
-/*   Updated: 2023/04/14 10:08:13 by damachad         ###   ########.fr       */
+/*   Created: 2023/04/12 14:35:10 by damachad          #+#    #+#             */
+/*   Updated: 2023/04/12 14:35:48 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-void	*ft_calloc(size_t nitems, size_t size)
+int	ft_strlen(char const*str)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	int	i;
 
 	i = 0;
-	ptr = NULL;
-	ptr = (void *)malloc(nitems * size);
-	while (i < nitems)
+	while (str[i] != '\0')
 	{
-		ptr[i] = '\0';
 		i++;
 	}
-	return (ptr);
+	return (i);
 }
-/*
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*trim;
+	int		len;
+	int		begin;
+	int		end;
+
+	begin = 0;
+	len = ft_strlen(s1);
+	end = len - 1;
+	trim = (char *)malloc(len + 1);
+	while (s1[begin] == set[begin])
+		begin++;
+	while (s1[end] == ' ' || (s1[end] >= 9 && s1[end] <= 13))
+		end--;
+}
+
 int	main(void)
 {
-	int	*a;
-	int	i;
-	int	n;
+	char const	str[10] = "  hello  ";
+	char const	set;
 
-	i = 0;
-	n = 5;
-	a = (int *) ft_calloc(n, sizeof(int));
-	if (a == NULL)
-		printf("Memory not allocated\n");
-	while (i < n)
-	{
-		printf("%d\n", a[i]);
-		i++;
-	}
-	return 0;
-}*/
+	printf("%s", ft_strtrim(str));
+}

@@ -49,15 +49,15 @@ char	*ft_strcpy(char *dest, char *src)
 	dest[a] = '\0';
 	return (dest);
 }
-
-int	main (void)
+/*
+int	main(void)
 {
-	const char src[10] = "sources";
-	char dest[10];
+	const char	src[10] = "sources";
+	char		dest[10];
 
-	ft_strcpy(dest,"Hello!");
+	ft_strcpy(dest, "Hello!");
 	printf("Before memcpy dest = %s\n", dest);
 	ft_memmove(dest, src, 3);
 	printf("After memcpy dest = %s\n", dest);
-	return(0);
-}
+	return (0);
+}*/
