@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	write_dig(int n, int fd)
+static void	write_dig(int n, int fd)
 {
 	char	e;
 
@@ -20,7 +20,7 @@ void	write_dig(int n, int fd)
 	write(fd, &e, 1);
 }
 
-void	into_array(int n_digit, int n, int fd)
+static void	into_array(int n_digit, int n, int fd)
 {
 	int	digits[10];
 	int	count;
@@ -41,7 +41,7 @@ void	into_array(int n_digit, int n, int fd)
 	}
 }
 
-void	inv(int *ptr, int fd)
+static void	inv(int *ptr, int fd)
 {
 	*ptr *= -1;
 	write(fd, "-", 1);

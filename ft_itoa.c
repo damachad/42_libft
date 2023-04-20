@@ -10,20 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	inv(int *ptr)
-{
-	int	sign;
-
-	sign = 1;
-	*ptr *= -1;
-	sign *= -1;
-	return (sign);
-}
-
-int	count(int n)
+static int	count(int n)
 {
 	int	count;
 
@@ -38,7 +27,7 @@ int	count(int n)
 	return (count);
 }
 
-char	*allocate(int count, int sign)
+static char	*allocate(int count, int sign)
 {
 	char	*numb;
 
@@ -49,30 +38,7 @@ char	*allocate(int count, int sign)
 	return (numb);
 }
 
-char	*ft_strcpy(char *dest, char *src)
-{
-	int	a;
-
-	a = 0;
-	while (src[a] != '\0')
-	{
-		dest[a] = src[a];
-		a++;
-	}
-	dest[a] = '\0';
-	return (dest);
-}
-
-char	*min(void)
-{
-	char	*numb;
-
-	numb = (char *)malloc(12);
-	numb = ft_strcpy(numb, "-2147483648");
-	return (numb);
-}
-
-char	*into_array(char *str, int size, int sign, int n)
+static char	*into_array(char *str, int size, int sign, int n)
 {
 	str[size - 1] = '\0';
 	while (size > 0)
@@ -95,26 +61,40 @@ char	*ft_itoa(int n)
 
 	sign = 1;
 	if (n == -2147483648)
-		numb = min();
-	if (n < 0 && n > -2147483648)
-		sign = inv(&n);
-	if (n > -2147483648)
 	{
-		n_digits = count(n);
-		numb = allocate(n_digits, sign);
-		if (sign < 0)
-			str_size = n_digits + 2;
-		else
-			str_size = n_digits + 1;
-		numb = into_array(numb, str_size, sign, n);
+		numb = ft_strdup("-2147483648");
+		return (numb);
 	}
+	else if (n < 0)
+	{
+		n *= -1;
+		sign *= -1;
+	}
+	n_digits = count(n);
+	numb = allocate(n_digits, sign);
+	if (sign < 0)
+		str_size = n_digits + 2;
+	else
+		str_size = n_digits + 1;
+	numb = into_array(numb, str_size, sign, n);
 	return (numb);
 }
 /*
+void	ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+	write(1, "\n", 1);
+}
+
 int	main(void)
 {
 	char	*numb;
 
-	numb = ft_itoa(42);
-	printf("number: %s\n", numb);
+	numb = ft_itoa(214748364);
+	ft_print_result(numb);
 }*/

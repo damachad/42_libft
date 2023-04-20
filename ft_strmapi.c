@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 14:36:40 by damachad          #+#    #+#             */
-/*   Updated: 2023/04/11 14:36:45 by damachad         ###   ########.fr       */
+/*   Created: 2023/04/13 15:19:14 by damachad          #+#    #+#             */
+/*   Updated: 2023/04/13 15:19:52 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdio.h>
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+#include "libft.h"
+/*
+static char	to_upper(unsigned int i, char c)
 {
-	size_t	i;
+	if (i % 2 == 0 && c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
+}
+*/
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int		i;
+	char	*str;
 
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	str = (char *)malloc(ft_strlen(s) + 1);
+	if (s != 0)
 	{
-		if (s1[i] == s2[i])
+		while (s[i] != '\0')
+		{
+			str[i] = f(i, s[i]);
 			i++;
-		else
-			return (s1[i] - s2[i]);
+		}
 	}
-	return (0);
+	str[i] = '\0';
+	return (str);
 }
 /*
 int	main(void)
 {
-	char	a[] = "john";
-	char	b[] = "john ";
-
-	printf("%d\n", ft_strncmp(a, b, 6));
+	printf("%s\n", ft_strmapi("abc", to_upper));
 }*/

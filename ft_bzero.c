@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
-#include <unistd.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*str;
-	unsigned long	i;
+	char	*str;
+	size_t	i;
 
 	i = 0;
 	str = s;
@@ -27,9 +27,9 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 /*
-void	ft_putstr2(char *str, unsigned int n)
+void	ft_putstr2(char *str, int n)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (i < n)

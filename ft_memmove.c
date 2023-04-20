@@ -10,54 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
+#include <string.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*source;
-	unsigned char	temp[n];
-	unsigned long	i;
+	char	*d;
+	char	*source;
+	char	temp[400];
+	size_t	i;
 
 	d = dest;
-	source = (unsigned char *)src;
+	source = (char *)src;
 	i = 0;
-	while (i < n)
+	while (i < n && source[i] != '\0')
 	{
 		temp[i] = source[i];
 		i++;
 	}
+	temp[i] = '\0';
 	i = 0;
-	while (i < n)
+	while (i < n && temp[i] != '\0')
 	{
 		d[i] = temp[i];
 		i++;
 	}
 	return (d);
 }
-
-char	*ft_strcpy(char *dest, char *src)
-{
-	int	a;
-
-	a = 0;
-	while (src[a] != '\0')
-	{
-		dest[a] = src[a];
-		a++;
-	}
-	dest[a] = '\0';
-	return (dest);
-}
 /*
-int	main(void)
+int	main (void)
 {
-	const char	src[10] = "sources";
-	char		dest[10];
+	const char src[10] = "sources";
+	char dest[10] = "dest";
+	char dest1[10] = "dest";
 
-	ft_strcpy(dest, "Hello!");
-	printf("Before memcpy dest = %s\n", dest);
+	printf("Before ft_memmove dest = %s\n", dest);
 	ft_memmove(dest, src, 3);
-	printf("After memcpy dest = %s\n", dest);
-	return (0);
+	printf("After ft_memmove dest = %s\n", dest);
+	printf("Before memmove dest1 = %s\n", dest1);
+	memmove(dest1, src, 3);
+	printf("After memmove dest = %s\n", dest1);
+	return(0);
 }*/

@@ -10,38 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 #include <stdio.h>
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_strdup(const char *src)
-{
-	int		l;
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	l = ft_strlen(src);
-	ptr = (char *)malloc((l + 1) * 1);
-	while (src[i] != '\0')
-	{
-		ptr[i] = src[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
-}
+#include <string.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -60,9 +31,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-
+/*
 int	main(void)
 {
 	printf("sub: %s\n", ft_substr("hello men", 2, 6));
 	return (0);
-}
+}*/

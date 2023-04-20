@@ -27,7 +27,7 @@ char	*ft_strchr(const char *str, int c)
 	}
 	return (0);
 }
-/*
+
 int	main(void)
 {
 	char	*ptr1;
@@ -35,4 +35,4 @@ int	main(void)
 	ptr1 = ft_strchr("hello me", 'o');
 	printf("%s", ptr1);
 	return (0);
-}*/
+}

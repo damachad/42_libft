@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	*ft_calloc(size_t nitems, size_t size)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	char	*ptr;
+	size_t	i;
 
 	i = 0;
 	ptr = NULL;

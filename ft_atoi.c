@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	sign;
@@ -22,16 +22,20 @@ int	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == '+')
 		i++;
-	if (str[i] == '-')
+	if (nptr[i] == '-' && nptr[i - 1] == '+')
+		return (sign * result);
+	if (nptr[i - 1] == '+' && nptr[i - 2] == '+')
+		return (sign * result);
+	if (nptr[i] == '-')
 	{
 		sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		result = result * 10 + (str[i] - '0');
+		result = result * 10 + (nptr[i] - '0');
 		i++;
 	}
 	return (sign * result);
@@ -39,7 +43,7 @@ int	ft_atoi(char *str)
 /*
 int	main(void)
 {
-	char	str[] = " 	-98 3t5";
+	char	str[] = "-48";
 
 	printf("%d\n", ft_atoi(str));
 	printf("%d\n", atoi(str));
