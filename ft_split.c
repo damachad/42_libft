@@ -11,7 +11,20 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 #include <stdio.h>
+
+static int	skip_word(const char *str, char c)
+{
+	int	n_letters;
+
+	n_letters = 0;
+	while (str[n_letters] != '\0' && str[n_letters] != c)
+	{
+		n_letters++;
+	}
+	return (n_letters);
+}
 
 static int	count_words(const char *s, char delim)
 {
@@ -22,6 +35,8 @@ static int	count_words(const char *s, char delim)
 	n = 0;
 	i = 0;
 	len = ft_strlen(s);
+	if (len == 0)
+		return (0);
 	while (s[i] != '\0')
 	{
 		if (s[i] == delim && s[i + 1] != delim)
@@ -35,21 +50,24 @@ static int	count_words(const char *s, char delim)
 	return (n);
 }
 
-static char	*ft_strdup2(const char *src, int beg, int end)
+static char	*word_cpy(const char *s, char c)
 {
 	int		i;
-	size_t	l;
+	int		l;
 	char	*ptr;
 
 	i = 0;
-	l = ft_strlen(src);
-	ptr = (char *)malloc((l + 1) * 1);
-	if (!ptr)
-		return (NULL);
-	while (beg <= end)
+	l = 0;
+	while (s[l] != '\0' && s[l] != c)
 	{
-		ptr[i] = src[beg];
-		beg++;
+		l++;
+	}
+	ptr = (char *)malloc((l + 1) * sizeof(char));
+	if (!ptr)
+		return (0);
+	while (i < l)
+	{
+		ptr[i] = s[i];
 		i++;
 	}
 	ptr[i] = '\0';
@@ -60,58 +78,54 @@ char	**ft_split(char const *s, char c)
 {
 	char	**words;
 	int		i;
-	int		offset;
 	int		j;
 
 	i = 0;
 	j = 0;
-	offset = 0;
-	words = (char **)malloc(count_words(s, c) + 1);
+	words = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!words)
-		return (NULL);
+		return (0);
 	while (s[i] != '\0')
 	{
-		if (s[i] == c && i > offset)
+		while (s[i] == c)
+			i++;
+		if (s[i] != '\0')
 		{
-			words[j] = ft_strdup2(s, offset, i - 1);
-			if (!words[j])
-				return (NULL);
-			offset = i + 1;
-			j++;
+			words[j++] = word_cpy(s + i, c);
+			i += skip_word(s + i, c);
 		}
-		i++;
 	}
-	words[j] = ft_strdup2(s, offset, i - 1);
-	if (!words[j])
-		return (NULL);
-	j++;
-	words[j] = NULL;
+	words[j] = 0;
 	return (words);
+}
+
+void	ft_print_result(char const *s)
+{
+	int	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
 }
 
 int	main(void)
 {
 	char	**words;
 	int		i;
-	int	n_words;
+	int		n_words;
 	char	c;
-	char	str[] = "hola_yo_soy_dora_ad_ag_ht";
+	char	str[] = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
 
-	i = -1;
-	c = '_';
-	n_words = count_words(str, c);
-	words = (char **)malloc(n_words + 1);
-	words = ft_split(str, c);
-	while (i++ < n_words)
-	{
-		printf("%s\n", words[i]);
-	}
-/*	
 	i = 0;
+	c = ' ';
+	n_words = count_words(str, c);
+	words = (char **)malloc((n_words + 1) * sizeof(char *));
+	words = ft_split(str, c);
 	while (words[i] != NULL)
 	{
-		free(words[i]);
+		ft_print_result(words[i]);
+		write(1, "\n", 1);
 		i++;
 	}
-	free(words);*/
 }
