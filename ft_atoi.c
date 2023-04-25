@@ -11,7 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
+static int	tester(char c)
+{
+	if (c == '+' || c == '-')
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -23,11 +29,11 @@ int	ft_atoi(const char *nptr)
 	sign = 1;
 	result = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == '+')
+	{
+		if (tester(nptr[i]) == 1 && tester(nptr[i + 1]) == 1)
+			return (sign * result);
 		i++;
-	if (nptr[i] == '-' && nptr[i - 1] == '+')
-		return (sign * result);
-	if (nptr[i - 1] == '+' && nptr[i - 2] == '+')
-		return (sign * result);
+	}
 	if (nptr[i] == '-')
 	{
 		sign *= -1;
@@ -40,11 +46,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * result);
 }
-/*
-int	main(void)
-{
-	char	str[] = "-48";
-
-	printf("%d\n", ft_atoi(str));
-	printf("%d\n", atoi(str));
-}*/

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 char	*ft_strdup(const char *s)
@@ -32,11 +31,3 @@ char	*ft_strdup(const char *s)
 	ptr[i] = '\0';
 	return (ptr);
 }
-/*
-int	main(void)
-{
-	char	*ptr;
-
-	ptr = ft_strdup("hello");
-	printf("%s", ptr);
-}*/

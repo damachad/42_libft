@@ -6,7 +6,7 @@
 #    By: damachad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/04/20 15:48:58 by damachad         ###   ########.fr        #
+#    Updated: 2023/04/25 18:29:51 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,12 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
       ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
       ft_strmapi.c ft_split.c
 
-OBJ = ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o \
-      ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o \
-      ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o \
-      ft_putstr_fd.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_striteri.o \
-      ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strnstr.o \
-      ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o \
-      ft_strmapi.o ft_split.o
+OBJ = $(SRC:.c=.o)
+
+BNS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+	  ft_lstdelone.c ft_lstiter.c
+
+BNS_OBJ = $(BNS_SRC:.c=.o)
 
 all: $(NAME)
 	
@@ -38,11 +37,13 @@ $(NAME):
 	ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-
+bonus:
+	cc $(CFLAGS) -c $(SRC) $(BNS_SRC)
+	ar rcs $(NAME) $(OBJ) $(BNS_OBJ)

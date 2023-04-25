@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 char	*ft_strchr(const char *str, int c)
 {
 	int		i;
@@ -25,14 +23,9 @@ char	*ft_strchr(const char *str, int c)
 			return (ptr + i);
 		i++;
 	}
-	return (0);
-}
-
-int	main(void)
-{
-	char	*ptr1;
-
-	ptr1 = ft_strchr("hello me", 'o');
-	printf("%s", ptr1);
+	if (c == '\0')
+	{
+		return (ptr + i);
+	}
 	return (0);
 }

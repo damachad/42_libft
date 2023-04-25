@@ -27,29 +27,28 @@ static int	count(int n)
 	return (count);
 }
 
-static char	*allocate(int count, int sign)
+static char	*into_array(int size, int sign, int n)
 {
 	char	*numb;
+	int		str_size;
 
-	if (sign > 0)
-		numb = (char *)malloc(count + 1);
+	if (sign < 0)
+		str_size = size + 2;
 	else
-		numb = (char *)malloc(count + 2);
-	return (numb);
-}
-
-static char	*into_array(char *str, int size, int sign, int n)
-{
-	str[size - 1] = '\0';
-	while (size > 0)
+		str_size = size + 1;
+	numb = (char *)malloc(str_size);
+	if (numb == 0)
+		return (0);
+	numb[str_size - 1] = '\0';
+	while (str_size > 1)
 	{
-		str[size - 2] = (n % 10) + 48;
+		numb[str_size - 2] = (n % 10) + 48;
 		n = n / 10;
-		size--;
+		str_size--;
 	}
 	if (sign == -1)
-		str[0] = '-';
-	return (str);
+		numb[0] = '-';
+	return (numb);
 }
 
 char	*ft_itoa(int n)
@@ -57,7 +56,6 @@ char	*ft_itoa(int n)
 	char	*numb;
 	int		sign;
 	int		n_digits;
-	int		str_size;
 
 	sign = 1;
 	if (n == -2147483648)
@@ -71,30 +69,6 @@ char	*ft_itoa(int n)
 		sign *= -1;
 	}
 	n_digits = count(n);
-	numb = allocate(n_digits, sign);
-	if (sign < 0)
-		str_size = n_digits + 2;
-	else
-		str_size = n_digits + 1;
-	numb = into_array(numb, str_size, sign, n);
+	numb = into_array(n_digits, sign, n);
 	return (numb);
 }
-/*
-void	ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-	write(1, "\n", 1);
-}
-
-int	main(void)
-{
-	char	*numb;
-
-	numb = ft_itoa(214748364);
-	ft_print_result(numb);
-}*/

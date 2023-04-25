@@ -24,14 +24,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	d = dest;
 	source = (char *)src;
 	i = 0;
-	while (i < n && source[i] != '\0')
+	while (i < n)
 	{
 		temp[i] = source[i];
 		i++;
 	}
 	temp[i] = '\0';
 	i = 0;
-	while (i < n && temp[i] != '\0')
+	while (i < n)
 	{
 		d[i] = temp[i];
 		i++;

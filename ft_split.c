@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
 
 static int	skip_word(const char *str, char c)
 {
@@ -97,35 +95,4 @@ char	**ft_split(char const *s, char c)
 	}
 	words[j] = 0;
 	return (words);
-}
-
-void	ft_print_result(char const *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-
-int	main(void)
-{
-	char	**words;
-	int		i;
-	int		n_words;
-	char	c;
-	char	str[] = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
-
-	i = 0;
-	c = ' ';
-	n_words = count_words(str, c);
-	words = (char **)malloc((n_words + 1) * sizeof(char *));
-	words = ft_split(str, c);
-	while (words[i] != NULL)
-	{
-		ft_print_result(words[i]);
-		write(1, "\n", 1);
-		i++;
-	}
 }
