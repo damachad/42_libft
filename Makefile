@@ -6,7 +6,7 @@
 #    By: damachad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/04/25 18:29:51 by damachad         ###   ########.fr        #
+#    Updated: 2023/04/27 13:10:24 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 OBJ = $(SRC:.c=.o)
 
 BNS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-	  ft_lstdelone.c ft_lstiter.c
+	  ft_lstdelone.c ft_lstiter.c ft_lstclear.c ft_lstmap.c
 
 BNS_OBJ = $(BNS_SRC:.c=.o)
 

@@ -11,29 +11,30 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
-	char	*s_dup;
-	size_t	i;
 
-	i = 0;
-	s_dup = ft_strdup(s);
-	sub = (char *)malloc(len + 1);
-	while (i < len)
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		len = 0;
+	if (start < 4294967295)
 	{
-		sub[i] = s_dup[start + i];
-		i++;
+		if (ft_strlen(s + start) < len)
+			len = ft_strlen(s + start);
+		sub = (char *)malloc((len + 1) * sizeof(char));
+		if (!sub)
+			return (0);
+		ft_strlcpy(sub, s + start, len + 1);
 	}
-	sub[i] = '\0';
+	else
+	{
+		sub = (char *)malloc((1) * sizeof(char));
+		if (!sub)
+			return (0);
+		sub[0] = '\0';
+	}
 	return (sub);
 }
-/*
-int	main(void)
-{
-	printf("sub: %s\n", ft_substr("hello men", 2, 6));
-	return (0);
-}*/

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -26,24 +25,3 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-/*
-void	ft_putstr2(char *str, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
-
-int	main(void)
-{
-	char	str[10] = "hello me";
-
-	printf("%s\n", str);
-	ft_bzero(str, 2);
-	ft_putstr2(str, 8);
-}*/

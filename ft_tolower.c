@@ -10,20 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		c = c + 32;
 	return (c);
 }
-/*
-int	main(void)
-{
-	char	c;
-
-	c = 'A';
-	printf("%d\n", ft_tolower(c));
-	putchar(ft_tolower(c));
-}*/

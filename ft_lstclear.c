@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 14:04:33 by damachad          #+#    #+#             */
-/*   Updated: 2023/04/12 14:05:13 by damachad         ###   ########.fr       */
+/*   Created: 2023/04/25 17:18:05 by damachad          #+#    #+#             */
+/*   Updated: 2023/04/25 17:18:07 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	*joined;
-	int		j_len;
-	int		i;
-	int		j;
+	t_list	*temp;
 
-	i = 0;
-	j = 0;
-	j_len = ft_strlen(s1) + ft_strlen(s2);
-	joined = (char *)malloc((j_len + 1) * sizeof(char));
-	if (!joined)
-		return (0);
-	while (s1[i] != '\0')
+	while (*lst)
 	{
-		joined[i] = s1[i];
-		i++;
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		(*lst) = temp;
 	}
-	while (s2[j] != '\0')
-	{
-		joined[i] = s2[j];
-		i++;
-		j++;
-	}
-	joined[i] = '\0';
-	return (joined);
 }

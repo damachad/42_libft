@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_isalnum(int c)
 {
 	if (c > 64 && c < 91)
@@ -23,11 +21,3 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-/*
-int	main(void)
-{
-	char	c;
-
-	c = '{';
-	printf("%d\n", ft_isalnum(c));
-}*/

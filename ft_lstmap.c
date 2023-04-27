@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 15:19:14 by damachad          #+#    #+#             */
-/*   Updated: 2023/04/13 15:19:52 by damachad         ###   ########.fr       */
+/*   Created: 2023/04/25 17:48:10 by damachad          #+#    #+#             */
+/*   Updated: 2023/04/25 17:48:13 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		i;
-	char	*str;
+	t_list	*new_node;
+	t_list	*head;
 
-	i = 0;
-	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (str == 0)
+	if (!lst || !f || !del)
 		return (0);
-	if (s != 0)
+	new_node = ft_lstnew(f(lst->content));
+	if (!new_node)
+		return (0);
+	head = new_node;
+	lst = lst->next;
+	while (lst)
 	{
-		while (s[i] != '\0')
+		new_node->next = ft_lstnew(f(lst->content));
+		if (!new_node->next)
 		{
-			str[i] = f(i, s[i]);
-			i++;
+			ft_lstclear(&head, del);
+			return (0);
 		}
+		new_node = new_node->next;
+		lst = lst->next;
 	}
-	str[i] = '\0';
-	return (str);
+	new_node->next = NULL;
+	return (head);
 }

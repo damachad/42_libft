@@ -14,18 +14,10 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	if (!s)
+		return ;
+	if (fd < 0)
+		return ;
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }
-/*
-int	main(void)
-{
-	ft_putendl_fd("hello", 1);
-}*/

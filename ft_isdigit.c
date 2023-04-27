@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_isdigit(int c)
 {
 	if (c > 47 && c < 58)
@@ -19,11 +17,3 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
-/*
-int	main(void)
-{
-	char	c;
-
-	c = 'a';
-	printf("%d\n", ft_isdigit(c));
-}*/

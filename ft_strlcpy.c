@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -33,14 +32,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 	return (src_l);
 }
-/*
-int	main(void)
-{
-	char	f1[] = "hi";
-	char	f2[] = "hello";
-	size_t	a;
-	
-	a = ft_strlcpy(f1, f2, 6);
-	printf("%zu\n", a);
-	printf("%s\n", f1);
-}*/

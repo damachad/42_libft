@@ -73,8 +73,3 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	into_array(count, n, fd);
 }
-/*
-int	main(void)
-{
-	ft_putnbr_fd(42, 1);
-}*/

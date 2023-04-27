@@ -12,20 +12,13 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	ptr = (char *)str;
-	while (ptr[i] != '\0')
+	while (*str != '\0')
 	{
-		if (ptr[i] == c)
-			return (ptr + i);
-		i++;
+		if ((unsigned char)*str == (unsigned char)c)
+			return ((char *)str);
+		str++;
 	}
-	if (c == '\0')
-	{
-		return (ptr + i);
-	}
+	if ((unsigned char)*str == (unsigned char)c)
+		return ((char *)str);
 	return (0);
 }

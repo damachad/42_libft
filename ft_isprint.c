@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_isprint(int c)
 {
 	if (c > 31 && c < 127)
@@ -19,17 +17,3 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-/*
-int	main(void)
-{
-	char	c;
-
-	c = '2';
-	printf("%d\n", ft_isprint(c));
-	c = 'a';
-	printf("%d\n", ft_isprint(c));
-	c = 'B';
-	printf("%d\n", ft_isprint(c));
-	c = '\n';
-	printf("%d\n", ft_isprint(c));
-}*/

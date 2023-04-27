@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
-
 int	ft_isalpha(int c)
 {
 	if (c > 64 && c < 91)
@@ -22,18 +19,3 @@ int	ft_isalpha(int c)
 	else
 		return (0);
 }
-/*
-int	main(void)
-{
-	char	c;
-
-	c = '4';
-	printf("%d\n", ft_isalpha(c));
-	printf("%d\n", isalpha(c));
-	c = 'b';
-	printf("%d\n", ft_isalpha(c));
-	printf("%d\n", isalpha(c));
-	c = 'C';
-	printf("%d\n", ft_isalpha(c));
-	printf("%d\n", isalpha(c));
-}*/
