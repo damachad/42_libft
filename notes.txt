@@ -1,3 +1,0 @@
-Fix memmove, strlcat, strchr, strrchr, strncmp, atoi, itoa, split
-
-split		First string empty (account for if string starts and/or ends with delimiter)
