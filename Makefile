@@ -30,10 +30,9 @@ BNS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back
 BNS_OBJ = $(BNS_SRC:.c=.o)
 
 all: $(NAME)
-	
 
-$(NAME):
-	cc $(CFLAGS) -c $(SRC)
+
+$(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 clean:
@@ -44,6 +43,7 @@ fclean: clean
 
 re: fclean all
 
-bonus:
-	cc $(CFLAGS) -c $(SRC) $(BNS_SRC)
+bonus: $(BNS_OBJ) $(OBJ)
 	ar rcs $(NAME) $(OBJ) $(BNS_OBJ)
+
+.PHONY: all clean fclean re bonus
